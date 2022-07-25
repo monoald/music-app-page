@@ -1,10 +1,7 @@
-:root {
-  --font-xs: 1rem;
-  --font-s: 1.2rem;
-  --font-m: 1.4rem;
-  --font-l: 1.8rem;
+/*----Main----*/
+.main {
+  grid-template-rows: 400px repeat(3, minmax(140px, 180px));
 }
-
 /*----Reorder-main-container----*/
 .page-container {
   grid-template: 66px calc(100vh - 66px) / minmax(272px, 340px) minmax(408px, auto) ;
