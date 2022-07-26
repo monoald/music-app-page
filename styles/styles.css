@@ -207,8 +207,8 @@ body {
   grid-template-areas: 
   "songs"
   "featured"
-  "."
-  ".";
+  "new-releases"
+  "top-10";
   overflow-y: scroll;
   scrollbar-color: var(--tertiary) var(--primary-alter);
   scrollbar-width: 8px;
@@ -344,6 +344,10 @@ body {
 /*----Featured----*/
 .featured {
   grid-area: featured;
+}
+.featured,
+.section {
+  position: relative;
   width: 100%;
   max-width: 100%;
   height: 100%;
@@ -353,7 +357,8 @@ body {
   align-items: flex-start;
   overflow: hidden;
 }
-.featured__title {
+.featured__title,
+.section__title {
   font-size: var(--font-l);
   color: var(--quaternary);
 }
@@ -361,8 +366,7 @@ body {
   font-size: var(--font-m);
   color: var(--secondary);
 }
-.featured .featured__container {
-  position: relative;
+.container {
   width: 100%;
   height: 100%;
   margin-top: var(--spacing-unit-x4);
@@ -372,17 +376,17 @@ body {
   overflow-y: hidden;
   z-index: 1;
 }
-.featured .featured__container::-webkit-scrollbar {
+.container::-webkit-scrollbar {
   display: none;
 }
-.featured .featured__container::after {
+.container::after {
   position: absolute;
-  top: 0;
-  right: -5px;
+  bottom: 0;
+  right: 0;
   width: 80px;
-  height: 100%;
+  height: 220px;
   content: "";
-  background-image: linear-gradient(to left, rgb(24, 30, 48) 20%, rgba(255,255,255,0));
+  background-image: linear-gradient(to left, rgb(24, 30, 48) 40%, rgba(255,255,255,0));
   z-index: 2;
 }
 .featured .album {
@@ -412,10 +416,45 @@ body {
   font-weight: 600;
   color: var(--secondary);
 }
-.album__artist {
+.album__artist,
+.container .song__artist {
   font-size: var(--font-s);
   font-weight: 400;
   color: var(--secondary-alter);
+}
+
+.releases {
+  grid-area: new-releases;
+}
+.container {
+  gap: var(--spacing-unit-x4);
+}
+.container .song {
+  width: 100px;
+  height: 160px;
+
+}
+.container .song__baner {
+  width: 100px;
+  height: 100px;
+  margin-bottom: var(--spacing-unit-x3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.container .song__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.container .song__title {
+  font-size: var(--font-m);
+  font-weight: 500;
+  color: var(--secondary);
+  margin-bottom: var(--spacing-unit);
+}
+
+.top-10 {
+  grid-area: top-10;
 }
 /*----keyframes----*/
 @keyframes timer {
