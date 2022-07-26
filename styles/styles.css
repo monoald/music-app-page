@@ -203,11 +203,28 @@ body {
   grid-row: 2;
   display: grid;
   place-items: center;
-  grid-template-rows: minmax(50vw, 300px) repeat(3, minmax(140px, 180px));
+  grid-template-rows: minmax(50vw, 300px) repeat(3, 280px);
+  grid-template-areas: 
+  "songs"
+  "featured"
+  "."
+  ".";
   overflow-y: scroll;
+  scrollbar-color: var(--tertiary) var(--primary-alter);
+  scrollbar-width: 8px;
+}
+.main::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--primary-alter);
+  border-radius: 14px;
+}
+.main::-webkit-scrollbar-thumb {
+  background-color: var(--tertiary);
+  border: 1px solid var(--primary-alter);
+  border-radius: 28px;
 }
 .your-music {
-  grid-row: 1;
+  grid-area: songs;
   position: relative;
   width: 80%;
   max-width: 430px;
@@ -262,6 +279,8 @@ body {
 .song__name {
   grid-area: name;
   font-size: var(--font-s);
+  text-shadow: 4px 2px var(--primary-alter);
+  letter-spacing: 1px;
   text-align: center;
   align-self: center;
 }
@@ -321,6 +340,82 @@ body {
 .current .album,
 .current .artist {
   display: block;
+}
+/*----Featured----*/
+.featured {
+  grid-area: featured;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: var(--spacing-unit-x4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.featured__title {
+  font-size: var(--font-l);
+  color: var(--quaternary);
+}
+.featured__subtitle {
+  font-size: var(--font-m);
+  color: var(--secondary);
+}
+.featured .featured__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: var(--spacing-unit-x4);
+  display: flex;
+  text-align: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  z-index: 1;
+}
+.featured .featured__container::-webkit-scrollbar {
+  display: none;
+}
+.featured .featured__container::after {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  width: 80px;
+  height: 100%;
+  content: "";
+  background-image: linear-gradient(to left, rgb(24, 30, 48) 20%, rgba(255,255,255,0));
+  z-index: 2;
+}
+.featured .album {
+  width: 130px;
+  min-width: 130px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-unit);
+}
+.album__baner {
+  width: 90px;
+  height: 90px;
+  min-height: 90px;
+  margin-bottom: var(--spacing-unit-x2);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.album__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.album__title {
+  font-size: var(--font-m);
+  font-weight: 600;
+  color: var(--secondary);
+}
+.album__artist {
+  font-size: var(--font-s);
+  font-weight: 400;
+  color: var(--secondary-alter);
 }
 /*----keyframes----*/
 @keyframes timer {
